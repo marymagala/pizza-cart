@@ -4,10 +4,37 @@ body{
 h1{
     text-align: center; 
         }
+
+        .f3{flex: 3;}
+        .cart{
+            background-color: aqua;
+            width: 70%;
+            margin-left: 20%;
+            margin-right: 20%;
+           
+            
+        }
         
+       
+
         .cart-show{
+           
             text-align: center;  
         }
+        @media (min-width: 768px) {
+            .cupcakes {
+                display: flex;
+                justify-content: center;
+               /*  margin-left: 45%;*/
+           /* margin-right: 45%;*/
+            }
+            .center {
+                display: flex;
+               
+                
+      }
+        }
+
         table {
             border-collapse: collapse;
             width: 70%;

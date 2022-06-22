@@ -24,7 +24,7 @@
         paymentAmount:0,
         paymentMessage:'',
 
-        CartTotal(){return this.SmallPizzaTotal + this.MediumPizzaTotal + this.LargePizzaTotal},
+        cartTotal(){return this.SmallPizzaTotal + this.MediumPizzaTotal + this.LargePizzaTotal},
         totalQty(){return this.smallPizzaqty + this.mediumPizzaqty + this.largePizzaqty},
         
         BuySmallPizza(){this.SmallPizzaTotal +=20.99;this.smallPizzaqty +=1},
@@ -37,7 +37,7 @@
         this.smallPizzaqty -=1}
     },
         ClearMediumPizza(){
-            if(this.MediumPizzaqty > 0){
+            if(this.mediumPizzaqty > 0){
             this.MediumPizzaTotal -=30.99;
             this.mediumPizzaqty -=1}
         },
@@ -47,14 +47,18 @@
                this.largePizzaqty -=1}
             },
             makePayment() {
+                
                 if (!this.paymentAmount){
                     this.paymentMessage = 'No amount entered!'
                 }
                 if (this.paymentAmount >= this.cartTotal() ){
-                    this.paymentMessage = 'Payment successful!'
-                   this.clearCart();
+                    this.paymentMessage = 'Enjoy your pizza!'
+                   setTimeout(() => {
+                    this.clearCart()
+                    this.payNow = false;
+                   }, 3000)
                 } else {
-                    this.paymentMessage = 'Payment failed!'
+                    this.paymentMessage = 'Sorry - that is not enough money!'
                 }
             },
             clearCart()  {
@@ -73,10 +77,13 @@
             <div class="f3">
 
                 <h1>Perfect pizza</h1>
-                <!--< <img class="image smally" src="smally.JPEG" width="80" alt="">
-                <img class="image tracy" src="tracy-special.jpg"  width="80" alt="">
-                <img class="image unknown" src="aafa75f2-pizza.jpg" width="80" alt="">-->
-
+                <div class="cupcakes">
+                    <h2 style="color:darkslategrey" style="font-family:'Courier New'">Good times call for a pizza</h2>
+                    <div class="cupcake"><img class="image smally" src="smally.JPEG" alt=""></div>
+                     <div class="cupcake"> <img class="image tracy" src="tracy-special.jpg" alt=""></div>
+                     <div class="cupcake">  <img class="image unknown" src="aafa75f2-pizza.jpg" alt=""></div>
+                    
+            </div>
             </div>
         </div>
       <div class="f1">
@@ -117,7 +124,7 @@
                 <td>
                     <span x-text="mediumPizzaqty"></span>
                     <button x-on:click="BuyMediumPizza">+</button>
-                    <button @click="ClearMediumPizza" x-show="mediumPizzaqty > 0">-</button>
+                    <button x-on:click="ClearMediumPizza" x-show="mediumPizzaqty > 0">-</button>
                 </td>
                 <td>
                     R<span x-text="MediumPizzaTotal.toFixed(2)"></span>
@@ -135,10 +142,10 @@
             R<span x-text="LargePizzaTotal.toFixed(2)"></span>
                 </td>
             </tr>
-            <tr x-show=" CartTotal() > 0">
+            <tr x-show=" cartTotal() > 0">
                 <td colspan="2">Total</td>
                 <td>
-                    R<span x-text="CartTotal().toFixed(2)"></span>
+                    R<span x-text="cartTotal().toFixed(2)"></span>
                 </td>
             </tr>
             <tr>
