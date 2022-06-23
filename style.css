@@ -21,7 +21,7 @@ h1{
            
             text-align: center;  
         }
-        @media (min-width: 768px) {
+        @media (min-width: 765px) {
             .cupcakes {
                 display: flex;
                 justify-content: center;
