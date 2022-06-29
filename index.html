@@ -190,7 +190,8 @@
                 }
                 if (this.paymentAmount >= this.cartTotal() ){
                     this.paymentMessage = 'Enjoy your pizza!'
-                   setTimeout(() => {
+                   
+                    setTimeout(() => {
                     this.clearCart()
                     this.payNow = false;
                    }, 3000)
@@ -205,6 +206,9 @@
                 this.mediumPizzaqty= 0;
                 this.LargePizzaTotal= 0.00;
                 this.largePizzaqty= 0;
+                this.paymentMessage='';
+              
+               
     
             }     
        
